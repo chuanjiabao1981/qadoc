@@ -91,7 +91,7 @@ Windows控制直播流播放状态，在播放状态发生改变的时候通知�
 
 ### 状态机
 
-![状态机](https://github.com/chuanjiabao1981/qadoc/raw/master/%E8%BE%85%E5%AF%BC%E7%8F%AD%E7%9B%B4%E6%92%AD%E7%8A%B6%E6%80%81%E6%9C%BA.png)
+![状态机](https://github.com/chuanjiabao1981/qadoc/raw/master/images/course_status.png)
 
 ### 客户端状态
 * 初始化
