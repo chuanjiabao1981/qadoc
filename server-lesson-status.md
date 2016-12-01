@@ -16,7 +16,6 @@
 * 错过
 * 调课
 * 上课
-* 心跳
 * 暂停
 * 结束
 * 完成
@@ -30,10 +29,13 @@
 ## 事件触发 
 
 ### 创建/删除
-辅导班在可编辑`rejected`, `init`状态下可以创建/删除课程, 课程创建/删除更新`lessons_count`(依赖counter_cache)
+辅导班在可编辑`rejected`, `init`状态下可以创建/删除课程
+
+课程创建/删除更新`lessons_count`(依赖counter_cache)
 
 ### 准备
 每天凌晨执行定时任务, 准备今日要上课的课程, `init`进入`ready`状态
+
 辅导班通过审核, 准备今日要上课的课程, `init`进入`ready`状态
 
 ### 错过
@@ -45,4 +47,34 @@
 调课后今日辅导班进入`ready`状态, 非今日辅导班进入`init`状态
 
 ### 上课
+
+上课动作使课程从`init`,`ready`,`missed`,`paused`,`closed`状态进入`teaching`状态
+
+从 `init`, `ready`, `missed`状态开课更新辅导班的`started_lessons_count`字段
+
+### 暂停
+
+长时间没有收到心跳的`teaching`课程进入暂停状态
+
+### 结束
+
+老师手动关闭直播进入结束状态
+
+### 完成
+
+老师开始下一节课自动完成今日结束的课程`closed`, 进入`finished`
+
+每日凌晨跑定时任务自动完成前一天结束的课程`closed`, 进入`finished`
+
+进入`finished`状态更新辅导班的 `finished_lessons_count`字段
+
+### 结算
+
+每天凌晨跑定时任务自动结算前2天的`finished`课程
+
+判断`finished_lessons_count`大于等于`lessons_count`则辅导班结束
+
+
+
+
 
