@@ -224,8 +224,8 @@ Windows控制直播流播放状态，在播放状态发生改变的时候通知�
 
 ```
 地址: 
-GET /api/v1/live_studio/lessons/:id/live_status
-GET /live_studio/lessons/:id/live_status
+GET /api/v1/live_studio/courses/:id/live_status
+GET /live_studio/courses/:id/live_status
 返回值:
 {
   
