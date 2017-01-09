@@ -1,5 +1,6 @@
 # 工作文档
 * [直播状态实时更新](live_status.md)
+* [直播回放功能设计](live_replay.md)
 
 ## Server
 * [辅导班状态变化](server-course-status.md)
